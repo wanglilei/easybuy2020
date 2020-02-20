@@ -23,13 +23,14 @@ public class ProductCateGoryImpl implements IProductCategory {
 
             //判断parentID 的值，如果为0，显示的是一级分类
             if (!"".equals(parentId) || null!= parentId){
-                parentId = "0";
-                sql.append("and parentId = "+parentId);
+                sql.append("and parentId = ?");
             }
             //获取连接
             Connection conn = DataSourceUtil.getConn();
             PreparedStatement pstmt = conn.prepareStatement(sql.toString());
-//            pstmt.setString(1,parentId);
+            if (!"".equals(parentId) && null != parentId) {
+                pstmt.setObject(1, parentId);
+            }
             //处理结果集
             ResultSet rs = pstmt.executeQuery();
             while(rs.next()){
