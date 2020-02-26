@@ -49,7 +49,7 @@ public class EasybuyUser implements Serializable {
 
 
     public Integer getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(Integer id) {
@@ -113,7 +113,7 @@ public class EasybuyUser implements Serializable {
     }
 
     public Integer getType() {
-        return type;
+        return this.type;
     }
 
     public void setType(Integer type) {

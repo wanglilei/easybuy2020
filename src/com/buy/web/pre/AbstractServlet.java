@@ -1,4 +1,4 @@
-package com.buy.web;
+package com.buy.web.pre;
 
 import com.buy.utils.EmptyUtils;
 import com.buy.utils.PrintUtil;
@@ -22,16 +22,15 @@ public abstract class AbstractServlet extends HttpServlet {
         String action = request.getParameter("action");
         Method method = null;
         Object result = null;
-
         try {
             //根据action参数来决定页面的跳转情况
             if (EmptyUtils.isEmpty(action)){
                 //如果参数为空，跳转的首页
                 result = execute(request,response);
-            }else{
+            }else {
                 //有参数的处理方式
-                method = getServletClass().getDeclaredMethod(action,HttpServletRequest.class, HttpServletResponse.class);
-                result = method.invoke(this,request,response);
+                method = getServletClass().getDeclaredMethod(action, HttpServletRequest.class, HttpServletResponse.class);
+                result = method.invoke(this, request, response);
             }
             toView(result,request,response);
         } catch (NoSuchMethodException e) {
@@ -78,12 +77,26 @@ public abstract class AbstractServlet extends HttpServlet {
                 //返回的是json 数据
                 PrintUtil.write(result,response);
             }
-
         }
     }
 
     public Object execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-//        request.getRequestDispatcher("/front/home.jsp").forward(request,response);
         return "/front/home";
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

@@ -1,4 +1,4 @@
-package com.buy.web;
+package com.buy.web.pre;
 
 import com.buy.entity.EasybuyProductCategory;
 import com.buy.service.product.IProductCateGoryService;
@@ -6,7 +6,6 @@ import com.buy.service.product.ProductCategoryServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
