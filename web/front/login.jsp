@@ -97,7 +97,7 @@
                     </tr>
                     <tr height="60">
                         <td>&nbsp;</td>
-                        <td><input type="button" value="登录" class="log_btn" onclick="login();"/></td>
+                        <td><input type="button" value="登录" class="s_btn" onclick="login();"/></td>
                     </tr>
                 </table>
             </form>

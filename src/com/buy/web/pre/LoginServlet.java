@@ -64,4 +64,24 @@ public class LoginServlet extends AbstractServlet {
         }
         return result;
     }
+
+    /**
+     * 用户注销
+     * @param request
+     * @param response
+     * @return
+     * @throws SQLException
+     */
+    public String logOut(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+        ReturnResult result = new ReturnResult();
+        //删除session用户的记录
+        request.getSession().removeAttribute("loginUser");
+
+
+//        //返回结果
+//        result.returnSuccess("注销成功！");
+
+//        return "/home?action=index";
+        return "/front/home";
+    }
 }

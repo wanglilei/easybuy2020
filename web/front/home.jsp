@@ -15,6 +15,7 @@
 
 <%
     Object obj = request.getAttribute("categoryList");
+    Object user = request.getAttribute("loginUser");
     if (obj == null){
         response.sendRedirect(request.getContextPath()+"/home?action=index");
     }
@@ -135,7 +136,18 @@
         </span>
         <!--End 所在收货地区 End-->
         <span class="fr">
-        	<span class="fl">你好，请<a href="${ctx}/front/login.jsp">登录</a>&nbsp; <a href="${ctx}/front/regist.jsp" style="color:#ff4e00;">免费注册</a>&nbsp;|&nbsp;<a href="#">我的订单</a>&nbsp;|</span>
+        	<span class="fl">
+                <c:if test="${sessionScope.loginUser == null}">
+                你好，请<a href="${ctx}/front/login.jsp">登录</a>&nbsp;
+                    <a href="${ctx}/front/regist.jsp" style="color:#ff4e00;">免费注册</a>
+
+
+                </c:if>
+                <c:if test="${sessionScope.loginUser != null}">
+                    用户<a href="#" style="color:#2d97ff;">【${sessionScope.loginUser.loginname}】</a>登陆&nbsp;
+                    <a href="login?action=logOut" style="color:#ff4e00;">注销</a>
+                </c:if>
+                &nbsp;|&nbsp;<a href="#">我的订单</a>&nbsp;|</span>
         	<span class="ss">
             	<div class="ss_list">
                 	<a href="#">收藏夹</a>

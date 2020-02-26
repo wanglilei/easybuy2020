@@ -24,12 +24,12 @@ public class HomeServlet extends AbstractServlet {
 //        //携带数据跳转到home.jsp
 //        request.getRequestDispatcher("/front/home.jsp").forward(request,response);
 //    }
-//
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("utf-8");
-        response.setContentType("text/html;charset=UTF-8");
-        doPost(request,response);
-    }
+////
+//    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        request.setCharacterEncoding("utf-8");
+//        response.setContentType("text/html;charset=UTF-8");
+//        doPost(request,response);
+//    }
 
     IProductCateGoryService productCategory;
     @Override
