@@ -9,5 +9,5 @@ public interface IUserService {
     EasybuyUser loginByName(String name) throws SQLException;
     int queryAllUser(String name,String password);
 
-    int addUser(EasybuyUser user);
+    boolean save(EasybuyUser user);
 }

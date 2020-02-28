@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.buy.utils.RegUtils" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2020/2/24
@@ -13,7 +13,10 @@
     var contextPath = "${ctx}";
 </script>
 
-
+<%
+    RegUtils regUtils = new RegUtils();
+    request.setAttribute("regUtils",regUtils);
+%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -54,7 +57,8 @@
 <div class="soubg">
     <div class="sou">
         <span class="fr">
-        	<span class="fl">你好，请<a href="${ctx}/front/login.jsp">登录</a>&nbsp; <a href="${ctx}/front/regist.jsp" style="color:#ff4e00;">免费注册</a>&nbsp; </span>
+        	<span class="fl">你好，请<a href="${ctx}/login?action=login">登录</a>&nbsp;
+                <a href="${ctx}/regist?action=toRegister" style="color:#ff4e00;">免费注册</a>&nbsp; </span>
             <span class="fl">|&nbsp;关注我们：</span>
             <span class="s_sh"><a href="#" class="sh1">新浪</a><a href="#" class="sh2">微信</a></span>
             <span class="fr">|&nbsp;<a href="#">手机版&nbsp;<img src="${ctx}/images/s_tel.png" align="absmiddle" /></a></span>
@@ -80,40 +84,50 @@
                         </td>
                     </tr>
                     <tr height="50">
+                        <td align="right"><font color="#ff4e00">*</font>&nbsp;登陆名 &nbsp;</td>
+                        <td><input type="text" value="" class="l_user" id="loginName"/></td>
+                    </tr>
+                    <tr height="50">
                         <td align="right"><font color="#ff4e00">*</font>&nbsp;用户名 &nbsp;</td>
-                        <td><input type="text" value="" class="l_user" /></td>
+                        <td><input type="text" value="" class="l_user" id="userName"/></td>
                     </tr>
                     <tr height="50">
                         <td align="right"><font color="#ff4e00">*</font>&nbsp;密码 &nbsp;</td>
-                        <td><input type="password" value="" class="l_pwd" /></td>
+                        <td><input type="password" value="" class="l_pwd" id="ped" /></td>
                     </tr>
                     <tr height="50">
                         <td align="right"><font color="#ff4e00">*</font>&nbsp;确认密码 &nbsp;</td>
-                        <td><input type="password" value="" class="l_pwd" /></td>
+                        <td><input type="password" value="" class="l_pwd" id="rePwd"/></td>
                     </tr>
                     <tr height="50">
                         <td align="right"><font color="#ff4e00">*</font>&nbsp;邮箱 &nbsp;</td>
-                        <td><input type="text" value="" class="l_email" /></td>
+                        <td><input type="text" value="" class="l_email" id="email"/></td>
                     </tr>
                     <tr height="50">
                         <td align="right"><font color="#ff4e00">*</font>&nbsp;手机 &nbsp;</td>
-                        <td><input type="text" value="" class="l_tel" /></td>
+                        <td><input type="text" value="" class="l_tel" id="phone"/></td>
                     </tr>
                     <tr height="50">
-                        <td align="right">邀请人会员名 &nbsp;</td>
-                        <td><input type="text" value="" class="l_mem" /></td>
-                    </tr>
+                    <td align="right"><font color="#ff4e00">*</font>&nbsp;性别 &nbsp;</td>
+                    <td>
+<%--                        checked--%>
+                        <form action="" method="get" id="sex">
+                            <input name="sex" type="radio" value="0" checked/>男&emsp;
+                            <input name="sex" type="radio" value="1" />女
+                        </form>
+                    </td>
+                </tr>
                     <tr height="50">
-                        <td align="right">邀请人ID号 &nbsp;</td>
-                        <td><input type="text" value="" class="l_num" /></td>
+                        <td align="right"><font color="#ff4e00">*</font>身份证号 &nbsp;</td>
+                        <td><input type="text" value="" class="l_num" id="idCode"/></td>
                     </tr>
-                    <tr height="50">
-                        <td align="right"> <font color="#ff4e00">*</font>&nbsp;验证码 &nbsp;</td>
-                        <td>
-                            <input type="text" value="" class="l_ipt" />
-                            <a href="#" style="font-size:12px; font-family:'宋体';">换一张</a>
-                        </td>
-                    </tr>
+<%--                    <tr height="50">--%>
+<%--                        <td align="right"> <font color="#ff4e00">*</font>&nbsp;验证码 &nbsp;</td>--%>
+<%--                        <td>--%>
+<%--                            <input type="text" value="" class="l_ipt" />--%>
+<%--                            <a href="#" style="font-size:12px; font-family:'宋体';">换一张</a>--%>
+<%--                        </td>--%>
+<%--                    </tr>--%>
                     <tr>
                         <td>&nbsp;</td>
                         <td style="font-size:12px; padding-top:20px;">
@@ -124,13 +138,89 @@
                     </tr>
                     <tr height="60">
                         <td>&nbsp;</td>
-                        <td><input type="submit" value="立即注册" class="log_btn" /></td>
+                        <td><input type="submit" value="立即注册" class="s_btn" onclick="reg();"/></td>
                     </tr>
                 </table>
             </form>
         </div>
     </div>
 </div>
+
+<script>
+    function reg() {
+        //获取相关字段的值
+        var loginName = $("#loginName").val();
+        var userName = $("#userName").val();
+        var password = $("#ped").val();
+        var confirmPassword = $("#rePwd").val();
+        var email = $("#email").val();
+        var mobile = $("#phone").val();
+        var identityCode = $("#idCode").val();
+        var sex = $("input[name='sex']:checked").val();
+        alert(loginName+"\n"+userName+"\n"+password+"\n"+confirmPassword+"\n"+email+"\n"+mobile+"\n"+identityCode+"\n"+sex);
+        // 判断密码是否一致
+        // if(loginName!=null && loginName!=""){
+        //     alert("用户名不能为空.");
+        //     return;
+        // }
+        // if(loginName.length<2 || loginName>10){
+        //     alert("登录名不能小于两个字符或者大于十个字符.");
+        //     return;
+        // }
+        // if(userName!=null && userName!=""){
+        //     alert("真实姓名不能为空.");
+        //     return;
+        // }
+        // if(userName.length<2 || userName>10){
+        //     alert("真实姓名不能小于两个字符或者大于十个字符.");
+        //     return;
+        // }
+        // if (password != confirmPassword) {
+        //     alert("两次输入的密码不一致.");
+        //     return;
+        //     //判断密码是否为空
+        // }
+        // if (password !="") {
+        //     alert("密码不能为空");
+        //     return;
+        //     //验证邮箱格式
+        // }
+        // if(email!=null && email!=""){
+        //     alert("邮箱不能为空");
+        //     return;
+        //     //验证邮箱格式
+        // }
+        // if(mobile!=null && mobile!=""){
+        //     alert("手机不能为空");
+        //     return;
+        //     //验证邮箱格式
+        // }
+        // if(identityCode!=null && identityCode!=""){
+        //     alert("身份证号不能为空");
+        //     return;
+        // }
+        $.ajax({
+            url:"${ctx}/regist",
+            dataType:"json",
+            type:"get",
+            data: {loginName:loginName, userName:userName, pwd:password, sex:sex, email:email,
+                phone:mobile, idCode:identityCode, action:"doRegister"},
+            success:function (json) {
+                alert("json");
+                if (json.status == 1){
+                    alert("登陆成功");
+                    location.href = "${ctx}/home?action=index"
+                }else {
+                    alert("登陆失败！");
+                }
+            },error:function () {
+                alert("error");
+            }
+        })
+    }
+</script>
+
+
 <!--End Login End-->
 <!--Begin Footer Begin-->
 <div class="btmbg">

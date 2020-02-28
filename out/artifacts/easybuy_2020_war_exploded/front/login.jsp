@@ -64,7 +64,7 @@
 
 <div class="log_bg">
     <div class="top">
-        <div class="logo"><a href="${ctx}/front/home.jsp"><img src="${ctx}/images/logo.png" /></a></div>
+        <div class="logo"><a href="${ctx}/home?action=index"><img src="${ctx}/images/logo.png" /></a></div>
     </div>
     <div class="login">
         <div class="log_img"><img src="${ctx}/images/l_img.png" width="611" height="425" /></div>
@@ -75,7 +75,7 @@
                         <td width="55">&nbsp;</td>
                         <td>
                             <span class="fl" style="font-size:24px;">登录</span>
-                            <span class="fr">还没有商城账号，<a href="Regist.html" style="color:#ff4e00;">立即注册</a></span>
+                            <span class="fr">还没有商城账号，<a href="${ctx}/regist?action=toRegister" style="color:#ff4e00;">立即注册</a></span>
                         </td>
                     </tr>
                     <tr height="70">
@@ -120,10 +120,10 @@
             success:function (json) {
                 // alert("json");
                 if (json.status == 1){
-                    // alert("ok");
+                    alert("登陆成功");
                     location.href = "${ctx}/home?action=index"
                 }else {
-                    alert("on");
+                    alert("登陆失败！");
                 }
             },error:function () {
                 alert("error");

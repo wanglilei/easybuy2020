@@ -19,5 +19,5 @@ public interface IUser {
      *
      * @return
      */
-    int addUser(EasybuyUser user);
+    int save(EasybuyUser user);
 }

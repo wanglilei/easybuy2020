@@ -82,33 +82,36 @@ public class EasybuyUserImpl extends DataSourceUtil implements IUser {
     }
 
     @Override
-    public int addUser(EasybuyUser user) {
+    public int save(EasybuyUser user) {
 
-        int returns = 0;
+        int num = 0;
 //         //编写SQL语句
-        StringBuffer sql = new StringBuffer("INSERT INTO easybuy_user (loginName,userName" +
-                ",password,sex,identityCode,email,mobile,type)");
+        StringBuffer sql = new StringBuffer("INSERT INTO easybuy_user ");
+        sql.append("(loginName,userName,password,sex,identityCode,email,mobile,type)");
         if (!EmptyUtils.isEmpty(user)){
             sql.append(" values(?,?,?,?,?,?,?,?)");
         }
-        try {
-            conn = DataSourceUtil.getConn();
-            pstmt = conn.prepareStatement(sql.toString());
-            if (!"".equals(user) && null != user) {
-                pstmt.setObject(1, user.getLoginname());
-                pstmt.setObject(2, user.getUsername());
-                pstmt.setObject(3, user.getPassword());
-                pstmt.setObject(4, user.getSex());
-                pstmt.setObject(5, user.getIdentitycode());
-                pstmt.setObject(6, user.getEmail());
-                pstmt.setObject(7, user.getMobile());
-                pstmt.setObject(7, user.getType());
-            }
-            returns = pstmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return returns;
+        num = this.executeInsert(sql.toString(),user.getLoginname(),user.getUsername(),user.getPassword(),
+                user.getSex(),user.getIdentitycode(),user.getEmail(),user.getMobile(),user.getType());
+
+//        try {
+////            conn = DataSourceUtil.getConn();
+////            pstmt = conn.prepareStatement(sql.toString());
+////            if (!"".equals(user) && null != user) {
+////                pstmt.setObject(1, user.getLoginname());
+////                pstmt.setObject(2, user.getUsername());
+////                pstmt.setObject(3, user.getPassword());
+////                pstmt.setObject(4, user.getSex());
+////                pstmt.setObject(5, user.getIdentitycode());
+////                pstmt.setObject(6, user.getEmail());
+////                pstmt.setObject(7, user.getMobile());
+////                pstmt.setObject(7, user.getType());
+////            }
+////            num = pstmt.executeUpdate();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+        return num;
     }
 
 }

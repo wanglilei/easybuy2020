@@ -26,7 +26,6 @@ public class LoginServlet extends AbstractServlet {
         return LoginServlet.class;
     }
 
-
     @Override
     public void init() throws ServletException{
         //从service层获取数据

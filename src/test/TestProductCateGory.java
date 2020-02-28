@@ -1,7 +1,5 @@
 package test;
 
-import com.buy.dao.product.IProductCategory;
-import com.buy.dao.product.ProductCateGoryImpl;
 import com.buy.entity.EasybuyProductCategory;
 import com.buy.service.product.IProductCateGoryService;
 import com.buy.service.product.ProductCategoryServiceImpl;

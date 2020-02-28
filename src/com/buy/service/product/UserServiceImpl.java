@@ -20,7 +20,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public int addUser(EasybuyUser user) {
-        return users.addUser(user);
+    public boolean save(EasybuyUser user) {
+        return users.save(user)>0?true:false;
     }
 }

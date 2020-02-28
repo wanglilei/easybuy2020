@@ -1,9 +1,4 @@
 package com.buy.utils;
-
-
-/**
- * Created by bdqn on 2016/4/21.
- */
 public class Constants {
     /**
      * json 格式返回数据的 status 标示说明
