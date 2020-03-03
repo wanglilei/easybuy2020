@@ -63,8 +63,6 @@ public class ProductCateGoryImpl implements IProductCategory {
             }
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
-            DataSourceUtil.closeConnection(conn);
         }
         return productCategories;
     }
