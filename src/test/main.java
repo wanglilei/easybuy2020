@@ -1,16 +1,9 @@
 package test;
 
 import com.buy.entity.EasybuyNews;
-import com.buy.entity.EasybuyUser;
 import com.buy.service.news.INewsService;
 import com.buy.service.news.NewsServiceImpl;
-import com.buy.service.product.IUserService;
-import com.buy.service.product.UserServiceImpl;
-import com.buy.utils.DataSourceUtil;
-import com.buy.utils.SecurityUtils;
 
-import javax.xml.crypto.Data;
-import java.sql.SQLException;
 import java.util.List;
 
 public class main{

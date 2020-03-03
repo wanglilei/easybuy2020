@@ -1,8 +1,8 @@
 package com.buy.web.pre;
 
 import com.buy.entity.EasybuyUser;
-import com.buy.service.product.IUserService;
-import com.buy.service.product.UserServiceImpl;
+import com.buy.service.user.IUserService;
+import com.buy.service.user.UserServiceImpl;
 import com.buy.utils.EmptyUtils;
 import com.buy.utils.ReturnResult;
 import com.buy.utils.SecurityUtils;
@@ -17,6 +17,7 @@ import java.sql.SQLException;
 @WebServlet(name = "LoginServlet" ,urlPatterns = {"/login"})
 public class LoginServlet extends AbstractServlet {
     IUserService userService;
+
     /**
      * 实例化
      * @return
@@ -43,6 +44,7 @@ public class LoginServlet extends AbstractServlet {
     public String toLogin(HttpServletRequest request, HttpServletResponse response){
         return "/front/login";
     }
+
     public ReturnResult login(HttpServletRequest request, HttpServletResponse response) throws SQLException {
         ReturnResult result = new ReturnResult();
         //获取用户登陆的用户名密码

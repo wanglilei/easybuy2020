@@ -195,7 +195,7 @@
     </div>
 </div>
 <div class="top">
-    <div class="logo"><a href="Index.html"><img src="${ctx}/images/logo.png" /></a></div>
+    <div class="logo"><a href="${ctx}/product?action=queryProducts"><img src="${ctx}/images/logo.png" /></a></div>
     <div class="search">
         <form>
             <input type="text" value="" class="s_ipt" />
@@ -252,9 +252,9 @@
                                 <div class="zj_l">
                                     <c:forEach items="${pc.productCategoryVoList}" var="pc2">
                                         <div class="zj_l_c">
-                                            <h2>${pc2.productCategory.name}</h2>
+                                            <h2><a href="${ctx}/product?action=queryProducts&categoryId=${pc2.productCategory.id}">${pc2.productCategory.name}</a></h2>
                                             <c:forEach items="${pc2.productCategoryVoList}" var="pc3">
-                                                <a href="#">${pc3.productCategory.name}</a>|
+                                                <a href="${ctx}/product?action=queryProducts&categoryId=${pc3.productCategory.id}">${pc3.productCategory.name}</a>|
                                             </c:forEach>
                                         </div>
                                     </c:forEach>
@@ -492,7 +492,8 @@
         <ul class="menu_r">
             <li><a href="Index.html">首页</a></li>
             <c:forEach var="category" items="${categoryList}">
-                <li><a href="Index.html">${category.productCategory.name}</a></li>
+
+                <li><a href="${ctx}/product?action=queryProducts&categoryId=${category.productCategory.id}">${category.productCategory.name}</a></li>
             </c:forEach>
         </ul>
         <div class="m_ad">中秋送好礼！</div>

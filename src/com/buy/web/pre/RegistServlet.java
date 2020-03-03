@@ -1,17 +1,13 @@
 package com.buy.web.pre;
 
-import com.buy.dao.user.IUser;
 import com.buy.entity.EasybuyUser;
-import com.buy.service.product.IUserService;
-import com.buy.service.product.UserServiceImpl;
+import com.buy.service.user.IUserService;
+import com.buy.service.user.UserServiceImpl;
 import com.buy.utils.*;
-import com.buy.web.pre.AbstractServlet;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.sql.SQLException;
 
 @WebServlet(name = "RegistServlet",urlPatterns = {"/regist"})

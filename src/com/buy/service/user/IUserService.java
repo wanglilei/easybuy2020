@@ -1,4 +1,4 @@
-package com.buy.service.product;
+package com.buy.service.user;
 
 import com.buy.entity.EasybuyUser;
 

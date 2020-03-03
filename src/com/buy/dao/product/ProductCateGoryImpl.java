@@ -5,6 +5,7 @@ import com.buy.utils.DataSourceUtil;
 import com.buy.utils.ProductCategoryVo;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -62,6 +63,8 @@ public class ProductCateGoryImpl implements IProductCategory {
             }
         } catch (Exception e) {
             e.printStackTrace();
+        }finally {
+            DataSourceUtil.closeConnection(conn);
         }
         return productCategories;
     }

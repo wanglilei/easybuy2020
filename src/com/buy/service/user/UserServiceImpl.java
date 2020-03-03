@@ -1,8 +1,9 @@
-package com.buy.service.product;
+package com.buy.service.user;
 
 import com.buy.dao.user.IUser;
 import com.buy.dao.user.EasybuyUserImpl;
 import com.buy.entity.EasybuyUser;
+import com.buy.service.user.IUserService;
 
 import java.sql.SQLException;
 
